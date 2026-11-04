@@ -3,6 +3,7 @@
 ANONYMOUS:
   debug level: 0
   verbosity: 0
+  print timers: true
   Mesh input file: input_mesh.yaml
   Physics: 
     modules: maxwell
@@ -103,7 +104,7 @@ ANONYMOUS:
             type: integrated
             location: volume
             function: '0.5*(curl(ctrl_current)[x]*curl(ctrl_current)[x])+0.5*(curl(ctrl_current)[y]*curl(ctrl_current)[y])+0.5*(curl(ctrl_current)[z]*curl(ctrl_current)[z])'
-            weight: 6.48e27
+            weight: 6.5e27
     Extra cell fields:
       Jx: 'current x'
       Jy: 'current y'
