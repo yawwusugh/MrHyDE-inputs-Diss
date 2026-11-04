@@ -1,0 +1,7 @@
+*.exo*
+*.out
+*.err
+mrhyde
+*.slurm
+*.sh
+Implicit_Runs/.DS_Store
