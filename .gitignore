@@ -4,4 +4,5 @@
 mrhyde
 *.slurm
 *.sh
+*.log
 Implicit_Runs/.DS_Store

@@ -14,7 +14,6 @@ ANONYMOUS:
     Eeqn:
       modules: maxwell
       active variables: E
-      active controls: true
       Dirichlet conditions:
         scalar data: false
         Ex: 
@@ -86,7 +85,7 @@ ANONYMOUS:
     write solution: true
     write frequency: 1
     exodus write frequency: 1
-    output file: opt-output
+    output file: opt-output/output
     compute objective: true
     compute response: false
     compute weighted norm: false

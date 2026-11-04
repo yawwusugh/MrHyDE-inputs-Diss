@@ -7,7 +7,6 @@ ANONYMOUS:
   Mesh input file: input_mesh.yaml
   Physics: 
     modules: maxwell
-    active controls: true
     Initial conditions:
       scalar data: true
       E: 0.0
@@ -87,7 +86,7 @@ ANONYMOUS:
       EM Energy:
         type: integrated control
         function: '0.5*permittivity*((E[x])^2+(E[y])^2+(E[z])^2) + 0.5/permeability*((B[x])^2+(B[y])^2+(B[z])^2)'
-        weight: 1.0e46   # J(0) ~ 1 for ROL; penalties calibrated with alpha = 1e-2 (regularization_weights/README.md)
+        weight: 1.0e46 
         blocks: 'eblock-0_0_0 eblock-0_0_1 eblock-0_0_2 eblock-0_0_6 eblock-0_0_7 eblock-0_0_8'
       RegObj:
         type: integrated control
