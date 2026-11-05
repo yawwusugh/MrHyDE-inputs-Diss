@@ -69,11 +69,11 @@ ANONYMOUS:
     max nonlinear iters: 1
     linear TOL: 1.0e-14   # mass solves: the discrete adjoint is exact only if M^-1 is
     max linear iters: 200
-    matrix free: false
+    matrix free: true
     use custom PCG: true
     lump mass: false
     use sparsifying mass quadrature: true   # Gauss-Lobatto mass: hex meshes only
-    sparse mass format: false
+    sparse mass format: true
     use basis database: true   # the sparsifying quadrature is applied only in the mass database
     use mass database: true
     storage proportion: 1.0

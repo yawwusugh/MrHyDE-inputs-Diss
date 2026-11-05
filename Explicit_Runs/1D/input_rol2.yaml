@@ -7,8 +7,8 @@ ANONYMOUS:
       General:
         Output Level: 3
         Do magnitude scan: false
-        Do grad+hessvec check: true # true   - make true when checking
-        Do exact hessvec check: true # true   - make true when checking
+        Do grad+hessvec check: false # true   - make true when checking
+        Do exact hessvec check: false # true   - make true when checking
         Do algebraic hessvec check: false # true   - make true when checking
         Do secant identity check: false # true   - make true when checking
         FD Scale: 1.0e-17      # scales the check direction d
@@ -28,8 +28,8 @@ ANONYMOUS:
         Krylov:
           Type: Conjugate Gradients
           Absolute Tolerance: 1.0e+30   # only the Relative Tolerance stops CG
-          Relative Tolerance: 1.0e-4
-          Iteration Limit: 300
+          Relative Tolerance: 1.0e-8
+          Iteration Limit: 1000
       Step:
         Type: Trust Region
         Trust Region:
