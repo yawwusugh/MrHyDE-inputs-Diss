@@ -1,0 +1,93 @@
+%YAML 1.1
+---
+ANONYMOUS:
+  debug level: 0
+  verbosity: 10
+  print timers: true
+  Mesh: 
+    dimension: 3
+    source: Exodus
+    mesh file: mesh/thunderbird-2.5d-scaled.exo
+    element type: hex  
+    Periodic BCs:
+      Count: 1
+      Periodic Condition 1: 'xy-all 1e-10: top;bottom'
+  Physics:
+    physics set names: "Eeqn, Beqn"
+    Dirichlet conditions:
+      scalar data: true
+    Eeqn:
+      modules: maxwell
+      active variables: E
+      Dirichlet conditions:
+        Ex: 
+          pec: '0.0'
+        Ey: 
+          pec: '0.0'
+        Ez: 
+          pec: '0.0'
+      Initial conditions:
+        scalar data: true
+        E: 0.0
+      Mass weights:
+        E: 1.0
+      Norm weights:
+        E: permittivity
+    Beqn:
+      modules: maxwell
+      active variables: B
+      active controls: true
+      Initial conditions:
+        scalar data: true
+        B: 0.0
+      Mass weights:
+        B: 1.0
+      Norm weights:
+        B: 1/permeability
+  Discretization:
+    Eeqn:
+      order:
+        E: 1
+      quadrature: 2
+      side quadrature: 2
+    Beqn:
+      order:
+        B: 1
+      quadrature: 2
+      side quadrature: 2
+  Functions input file: input_functions_forward.yaml
+  Solver:
+    solver: 'transient'
+    transient BDF order: 1
+    transient Butcher tableau: FWE
+    fully explicit: true
+    workset size: 100
+    final time: 2.0e-13
+    number of steps: 800   # explicit CFL (tools/check-CFL)
+    initial type: none
+    nonlinear TOL: 1.0e-07
+    max nonlinear iters: 1
+    linear TOL: 1.0e-14   # mass solves: the discrete adjoint is exact only if M^-1 is
+    max linear iters: 200
+    matrix free: true
+    use custom PCG: true
+    lump mass: false
+    use sparsifying mass quadrature: true   # Gauss-Lobatto mass: hex meshes only
+    sparse mass format: true
+    use basis database: true   # the sparsifying quadrature is applied only in the mass database
+    use mass database: true
+    storage proportion: 1.0
+  Analysis:
+    analysis type: forward
+  Postprocess:
+    write solution: true
+    write frequency: 1
+    exodus write frequency: 2
+    output file: forward-output/output
+    Extra cell fields:
+      Jx: 'current x'
+      Jy: 'current y'
+      Jz: 'current z'
+      conductivity: sigma
+      em_energy: '1.0e46 * (0.5*permittivity*(E[x]^2+E[y]^2+E[z]^2) + 0.5/permeability*(B[x]^2+B[y]^2+B[z]^2))' # * 1.0e35 
+...
