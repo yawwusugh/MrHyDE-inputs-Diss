@@ -28,8 +28,8 @@ ANONYMOUS:
         Krylov:
           Type: Conjugate Gradients
           Absolute Tolerance: 1.0e+30   # only the Relative Tolerance stops CG
-          Relative Tolerance: 1.0e-4
-          Iteration Limit: 300
+          Relative Tolerance: 1.0e-8
+          Iteration Limit: 1000
       Step:
         Type: Trust Region
         Trust Region:
