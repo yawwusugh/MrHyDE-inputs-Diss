@@ -1,7 +1,5 @@
 %YAML 1.1
 ---
-# Explicit E/B split version of Alexey-Hessian/1D: physics sets Eeqn {E} and Beqn {B}, FWE, matrix-free
-# sparsifying mass, 400 steps. Needs a MrHyDE build of the branch explicit_adjoint_split_noAD.
 ANONYMOUS:
   debug level: 0
   verbosity: 0
@@ -106,12 +104,12 @@ ANONYMOUS:
             type: integrated
             location: volume
             function: '0.5*(ctrl_current[x]*ctrl_current[x])+0.5*(ctrl_current[y]*ctrl_current[y])+0.5*(ctrl_current[z]*ctrl_current[z])'
-            weight: 1.03e41
+            weight: 1.03e40
           curlreg: 
             type: integrated
             location: volume
             function: '0.5*(curl(ctrl_current)[x]*curl(ctrl_current)[x])+0.5*(curl(ctrl_current)[y]*curl(ctrl_current)[y])+0.5*(curl(ctrl_current)[z]*curl(ctrl_current)[z])'
-            weight: 6.5e27
+            weight: 6.5e26
     Extra cell fields:
       Jx: 'current x'
       Jy: 'current y'
